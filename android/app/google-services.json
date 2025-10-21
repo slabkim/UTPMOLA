@@ -1,0 +1,25 @@
+{
+    "project_info": {
+        "project_number": "917478262923",
+        "project_id": "utpmola",
+        "storage_bucket": "utpmola.firebasestorage.app"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:917478262923:android:b45cdbd2ae12e0e87eac8e",
+            "android_client_info": {
+                "package_name": "com.example.utpmola"
+            }
+        },
+        "oauth_client": [],
+        "api_key": [{
+            "current_key": "AIzaSyCUfaHO-VIkV3_WJ_SPRXuC8TjuVGGQvyM"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": []
+            }
+        }
+    }],
+    "configuration_version": "1"
+}

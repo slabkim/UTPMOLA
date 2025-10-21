@@ -27,7 +27,7 @@ class SubscriptionsScreen extends StatelessWidget {
             height: 100,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               children: const [
                 ChannelAvatar(name: 'Tech Channel', initial: 'T'),
                 ChannelAvatar(name: 'Gaming Hub', initial: 'G'),

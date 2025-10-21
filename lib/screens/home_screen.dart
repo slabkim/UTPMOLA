@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
             height: 50,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               children: const [
                 CategoryChip(label: 'All', isSelected: true),
                 CategoryChip(label: 'Music', isSelected: false),

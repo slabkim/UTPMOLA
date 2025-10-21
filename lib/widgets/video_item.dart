@@ -39,7 +39,43 @@ class _VideoItemState extends State<VideoItem> {
   }
 
   @override
+  void didUpdateWidget(covariant VideoItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.videoUrl != widget.videoUrl) {
+      // Pause and recreate controller if video changes
+      try {
+        _controller?.pause();
+      } catch (_) {}
+      _controller?.dispose();
+      _controller = null;
+      if (widget.videoUrl != null) {
+        final videoId = YoutubePlayer.convertUrlToId(widget.videoUrl!);
+        if (videoId != null) {
+          _controller = YoutubePlayerController(
+            initialVideoId: videoId,
+            flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
+          );
+        }
+      }
+      setState(() {});
+    }
+  }
+
+  @override
+  void deactivate() {
+    // Pause playback when the widget is removed from the tree to
+    // prevent the underlying WebView from being used after dispose.
+    try {
+      _controller?.pause();
+    } catch (_) {}
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
+    try {
+      _controller?.pause();
+    } catch (_) {}
     _controller?.dispose();
     super.dispose();
   }
