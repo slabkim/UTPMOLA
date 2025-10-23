@@ -5,7 +5,8 @@ class VideoItem extends StatefulWidget {
   final String title;
   final String channel;
   final String metadata;
-  final String? imagePath;
+  final String? thumbnailUrl;
+  final String? duration;
   final String? videoUrl;
 
   const VideoItem({
@@ -13,7 +14,8 @@ class VideoItem extends StatefulWidget {
     required this.title,
     required this.channel,
     required this.metadata,
-    this.imagePath,
+    this.thumbnailUrl,
+    this.duration,
     this.videoUrl,
   });
 
@@ -99,27 +101,27 @@ class _VideoItemState extends State<VideoItem> {
                       handleColor: Colors.redAccent,
                     ),
                   )
-                : widget.imagePath != null
-                    ? Image.asset(
-                        widget.imagePath!,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return const Center(
-                            child: Icon(
-                              Icons.play_circle_outline,
-                              size: 64,
-                              color: Colors.white,
-                            ),
-                          );
-                        },
-                      )
-                    : const Center(
+                : widget.thumbnailUrl != null
+                ? Image.network(
+                    widget.thumbnailUrl!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Center(
                         child: Icon(
                           Icons.play_circle_outline,
                           size: 64,
                           color: Colors.white,
                         ),
-                      ),
+                      );
+                    },
+                  )
+                : const Center(
+                    child: Icon(
+                      Icons.play_circle_outline,
+                      size: 64,
+                      color: Colors.white,
+                    ),
+                  ),
           ),
         ),
         Padding(

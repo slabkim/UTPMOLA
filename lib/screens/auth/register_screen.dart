@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../services/auth_service.dart';
+import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  static const routeName = '/register';
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -160,7 +163,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (Navigator.canPop(context)) {
                               Navigator.pop(context);
                             } else {
-                              Navigator.pushNamed(context, '/login');
+                              Navigator.pushNamed(
+                                context,
+                                LoginScreen.routeName,
+                              );
                             }
                           },
                     child: const Text('Sudah punya akun? Masuk'),

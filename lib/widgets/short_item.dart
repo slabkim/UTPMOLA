@@ -6,6 +6,7 @@ class ShortItem extends StatelessWidget {
   final String channel;
   final String views;
   final String likes;
+  final String? thumbnail;
 
   const ShortItem({
     super.key,
@@ -13,6 +14,7 @@ class ShortItem extends StatelessWidget {
     required this.channel,
     required this.views,
     required this.likes,
+    this.thumbnail,
   });
 
   @override
@@ -20,14 +22,38 @@ class ShortItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: Colors.grey[900],
-          child: const Center(
-            child: Icon(
-              Icons.play_circle_filled,
-              size: 80,
-              color: Colors.white,
-            ),
-          ),
+          decoration: thumbnail != null
+              ? BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(thumbnail!),
+                    fit: BoxFit.cover,
+                  ),
+                )
+              : BoxDecoration(color: Colors.grey[900]),
+          child: thumbnail == null
+              ? const Center(
+                  child: Icon(
+                    Icons.play_circle_filled,
+                    size: 80,
+                    color: Colors.white,
+                  ),
+                )
+              : Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Container(
+                        color: Colors.black.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    const Center(
+                      child: Icon(
+                        Icons.play_circle_filled,
+                        size: 80,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
         ),
         const Positioned(
           top: 40,
